@@ -81,7 +81,12 @@ namespace FloodMonitoringServices.StepDefinitions
         [Then(@"the response should contain rainfall data for that specific date '([^']*)'")]
         public void ThenTheResponseShouldContainRainfallDataForThatSpecificDate(string date)
         {
+            var floodMonitoringRestResponse = _scenarioContext.Get<RestResponse>("FloodMonitoringRestResponse");
 
+            var floodMonitoringResponse = JsonConvert.DeserializeObject<FloodMonitoringResponse>(floodMonitoringRestResponse.Content);
+            Assert.AreEqual(floodMonitoringResponse.Meta.Limit, 0);
+            Assert.AreEqual(floodMonitoringResponse.Items.Count, 0);
+            Assert.True(floodMonitoringResponse.Meta.HasFormat.TrueForAll(x => x.Contains(date)));
 
         }
 
