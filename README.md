@@ -1,35 +1,19 @@
 # My Project
 
-
+* SortTechTest/FloodMonitoringServices
 
 ## Features
 
-
-
-- Easy to use
-- Fast and reliable
-
-
-
+- FloodMonitoringBasedOnStationData
 
 ## Installation
-
-
-
 1. Clone the repository
-2. Build the solutions
-3. Run the tests under Test explorer
-
-
+2. Build the solution
+3. Run the tests under Test Explorer
 
 ## Usage
-
-
-
 * Access the rainfall data using the Flood Monitoring API for a particular station
 
 ## Concepts
-
 * Dependency Injection
-
-*Scenario context
+* Scenario context
