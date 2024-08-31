@@ -17,7 +17,7 @@
 
 
 1. Clone the repository
-2. Build the solutions
+2. Build the solution
 3. Run the tests under Test explorer
 
 
@@ -31,5 +31,4 @@
 ## Concepts
 
 * Dependency Injection
-
 *Scenario context
