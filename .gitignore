@@ -3,3 +3,9 @@
 ################################################################################
 
 /.vs
+/FloodMonitoringServices/obj
+/FloodMonitoringServices/bin/Debug/net6.0
+/FloodMonitoringServices/.vs/FloodMonitoringServices
+/FloodMonitoringServices/Features/*.feature.cs
+
+/FloodMonitoringServices/.vs
