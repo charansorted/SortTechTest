@@ -1,3 +1,4 @@
+using FloodMonitoringServices.ServiceHelper;
 using System.Net;
 
 namespace FloodMonitoringServices.StepDefinitions
@@ -6,9 +7,11 @@ namespace FloodMonitoringServices.StepDefinitions
     public sealed class FloodMonitoringStepDefinitions
     {
         private ScenarioContext _scenarioContext;
-        public FloodMonitoringStepDefinitions(ScenarioContext scenarioContext)
+        private FloodMonitoringReadingLogic _floodMonitoringlReadingLogic;
+        public FloodMonitoringStepDefinitions(ScenarioContext scenarioContext, FloodMonitoringReadingLogic floodMonitoringReadingLogic)
         {
             _scenarioContext = scenarioContext;
+            _floodMonitoringlReadingLogic = floodMonitoringReadingLogic;
         }
 
 
@@ -24,7 +27,8 @@ namespace FloodMonitoringServices.StepDefinitions
         {
             var stationId = _scenarioContext.Get<string>("StationId");
 
-
+            var floodMonitoringRestResponse = await _floodMonitoringlReadingLogic.GetFloodMonitoringReadings(stationId, "limit", limitCount);
+            _scenarioContext.Set(floodMonitoringRestResponse, "FloodMonitoringRestResponse");
 
         }
 
