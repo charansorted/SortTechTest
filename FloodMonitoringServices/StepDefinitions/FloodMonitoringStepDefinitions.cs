@@ -1,4 +1,6 @@
 using FloodMonitoringServices.ServiceHelper;
+using NUnit.Framework;
+using RestSharp;
 using System.Net;
 
 namespace FloodMonitoringServices.StepDefinitions
@@ -35,7 +37,8 @@ namespace FloodMonitoringServices.StepDefinitions
         [Then(@"the response status should have status '([^']*)'")]
         public void ThenTheResponseStatusShouldHaveStatus(HttpStatusCode StatusCode)
         {
-
+            var floodMonitoringRestResponse = _scenarioContext.Get<RestResponse>("FloodMonitoringRestResponse");
+            Assert.AreEqual(StatusCode, floodMonitoringRestResponse.StatusCode);
         }
 
         [Then(@"the Items array count should be '([^']*)'")]
