@@ -8,7 +8,7 @@
 
 - Easy to use
 - Fast and reliable
-- Supports multiple platforms
+
 
 
 
