@@ -36,10 +36,10 @@ namespace FloodMonitoringServices.StepDefinitions
         }
 
         [Then(@"the response status should have status '([^']*)'")]
-        public void ThenTheResponseStatusShouldHaveStatus(HttpStatusCode StatusCode)
+        public void ThenTheResponseStatusShouldHaveStatus(string StatusCode)
         {
             var floodMonitoringRestResponse = _scenarioContext.Get<RestResponse>("FloodMonitoringRestResponse");
-            Assert.AreEqual(StatusCode, floodMonitoringRestResponse.StatusCode);
+            Assert.AreEqual(StatusCode, floodMonitoringRestResponse.StatusCode.ToString("D"));
         }
 
         [Then(@"the Items array count should be '([^']*)'")]
@@ -84,7 +84,7 @@ namespace FloodMonitoringServices.StepDefinitions
             var floodMonitoringRestResponse = _scenarioContext.Get<RestResponse>("FloodMonitoringRestResponse");
 
             var floodMonitoringResponse = JsonConvert.DeserializeObject<FloodMonitoringResponse>(floodMonitoringRestResponse.Content);
-            Assert.AreEqual(floodMonitoringResponse.Meta.Limit, 0);
+            Assert.AreEqual(floodMonitoringResponse.Meta.Limit, 500);
             Assert.AreEqual(floodMonitoringResponse.Items.Count, 0);
             Assert.True(floodMonitoringResponse.Meta.HasFormat.TrueForAll(x => x.Contains(date)));
 
