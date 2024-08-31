@@ -63,7 +63,10 @@ namespace FloodMonitoringServices.StepDefinitions
         [Then(@"the response should contain imposed length limit")]
         public void ThenTheResponseShouldContainImposedLengthLimit()
         {
+            var floodMonitoringRestResponse = _scenarioContext.Get<RestResponse>("FloodMonitoringRestResponse");
 
+            var floodMonitoringResponse = JsonConvert.DeserializeObject<FloodMonitoringResponse>(floodMonitoringRestResponse.Content);
+            Assert.AreEqual(floodMonitoringResponse.Meta.Limit, floodMonitoringResponse.Items.Count);
         }
 
         [When(@"I make an API request to the station endpoint with a specific date '([^']*)'")]
