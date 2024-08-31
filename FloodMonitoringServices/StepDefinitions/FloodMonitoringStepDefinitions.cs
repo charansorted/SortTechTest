@@ -72,7 +72,10 @@ namespace FloodMonitoringServices.StepDefinitions
         [When(@"I make an API request to the station endpoint with a specific date '([^']*)'")]
         public async Task WhenIMakeAnAPIRequestToTheStationEndpointWithASpecificDate(string date)
         {
+            var stationId = _scenarioContext.Get<string>("StationId");
 
+            var floodMonitoringRestResponse = await _floodMonitoringlReadingLogic.GetFloodMonitoringReadings(stationId, "date", date);
+            _scenarioContext.Set(floodMonitoringRestResponse, "FloodMonitoringRestResponse");
         }
 
         [Then(@"the response should contain rainfall data for that specific date '([^']*)'")]
