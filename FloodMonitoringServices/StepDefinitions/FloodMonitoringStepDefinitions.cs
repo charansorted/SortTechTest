@@ -1,4 +1,5 @@
 using FloodMonitoringServices.ServiceHelper;
+using Newtonsoft.Json;
 using NUnit.Framework;
 using RestSharp;
 using System.Net;
@@ -44,7 +45,10 @@ namespace FloodMonitoringServices.StepDefinitions
         [Then(@"the Items array count should be '([^']*)'")]
         public void ThenTheItemsArrayCountShouldBe(int limitCount)
         {
+            var floodMonitoringRestResponse = _scenarioContext.Get<RestResponse>("FloodMonitoringRestResponse");
 
+            var floodMonitoringResponse = JsonConvert.DeserializeObject<FloodMonitoringResponse>(floodMonitoringRestResponse.Content);
+            Assert.AreEqual(limitCount, floodMonitoringResponse.Items.Count);
         }
 
         [When(@"I make an API request to the station endpoint without specifying the limit parameter")]
