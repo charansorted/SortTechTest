@@ -1,6 +1,6 @@
 # My Project
 
-* SortTechTest
+* SortTechTest/FloodMonitoringServices
 
 ## Features
 
