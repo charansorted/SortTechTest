@@ -50,7 +50,10 @@ namespace FloodMonitoringServices.StepDefinitions
         [When(@"I make an API request to the station endpoint without specifying the limit parameter")]
         public async Task WhenIMakeAnAPIRequestToTheStationEndpointWithoutSpecifyingTheLimitParameter()
         {
+            var stationId = _scenarioContext.Get<string>("StationId");
 
+            var floodMonitoringRestResponse = await _floodMonitoringlReadingLogic.GetFloodMonitoringReadings(stationId);
+            _scenarioContext.Set(floodMonitoringRestResponse, "FloodMonitoringRestResponse");
         }
 
         [Then(@"the response should contain imposed length limit")]
