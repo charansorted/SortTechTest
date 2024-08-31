@@ -1,11 +1,5 @@
-﻿using Newtonsoft.Json;
-using RestSharp;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using RestSharp;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FloodMonitoringServices.ServiceHelper
 {
@@ -15,7 +9,7 @@ namespace FloodMonitoringServices.ServiceHelper
 
         public FloodMonitoringReadingLogic() { }
 
-        public async Task<dynamic> GetFloodMonitoringReadings(string stationId, [Optional] string? parameter, [Optional]string? value)
+        public async Task<dynamic> GetFloodMonitoringReadings(string stationId, [Optional] string? parameter, [Optional] string? value)
         {
             var options = new RestClientOptions(_baseURL)
             {
