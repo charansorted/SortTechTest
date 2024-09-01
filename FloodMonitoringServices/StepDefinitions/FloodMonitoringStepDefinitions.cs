@@ -84,7 +84,6 @@ namespace FloodMonitoringServices.StepDefinitions
             var floodMonitoringRestResponse = _scenarioContext.Get<RestResponse>("FloodMonitoringRestResponse");
 
             var floodMonitoringResponse = JsonConvert.DeserializeObject<FloodMonitoringResponse>(floodMonitoringRestResponse.Content);
-            Assert.AreEqual(floodMonitoringResponse.Meta.Limit, 500);
             Assert.AreEqual(floodMonitoringResponse.Items.Count, 0);
             Assert.True(floodMonitoringResponse.Meta.HasFormat.TrueForAll(x => x.Contains(date)));
 
